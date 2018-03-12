@@ -66,13 +66,7 @@ function downloadFun() {
             if (err) {
                 logger.fatal("rename err:" + err)
             }
-            spinner.stop();
-            logger.fatal("安装完成")
-
-            var spinner = ora("正在安装模板依赖...");
-            spinner.start();
-            c.execSync("cd " + tmp + " && npm install");
-
+           
             spinner.stop();
             logger.fatal("下载完成")
         })
