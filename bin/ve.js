@@ -63,10 +63,11 @@ function downloadFun() {
         var c = require("child_process");
         c.execSync("git clone " + url);
         fs.rename(path.join(process.cwd(), 'vue_webpack2.X'), tmp, function (err) {
-            if (err)
+            if (err){
                 logger.fatal("rename err:" + err)
-            console.log("cd /"+ tmp)
-            c.execSync("cd /"+ tmp + " && npm install");
+            }
+            console.log(chalk.green("正在安装模板依赖..."));
+            c.execSync("cd "+ tmp + " && npm install");
 
             spinner.stop();
             logger.fatal("安装完成")
