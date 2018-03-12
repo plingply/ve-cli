@@ -13,18 +13,15 @@ var chalk = require('chalk')
 var fs = require("fs")
 
 program
-    .usage("init [项目名称] [版本]")
+    .usage("init [项目名称]")
 
-program.on("--help", function() {
+program.on("--help", function () {
     console.log();
     console.log("  例如:");
     console.log(
         chalk.gray("    # 创建新项目")
     );
-    console.log("    $ ve init my-project [版本号/v2]");
-    console.log(
-        chalk.green("    # v2参数表示使用webpack2的模板,不填写 默认v2")
-    );
+    console.log("    $ ve init my-project");
 });
 
 var url = "https://git.coding.net/plingply/vue_webpack2.X.git";
@@ -65,7 +62,7 @@ function downloadFun() {
         if (exists(oldpath)) rm(oldpath);
         var c = require("child_process");
         c.execSync("git clone " + url);
-        fs.rename(path.join(process.cwd(), 'vue_webpack2.X'), tmp, function(err) {
+        fs.rename(path.join(process.cwd(), 'vue_webpack2.X'), tmp, function (err) {
             if (err)
                 logger.fatal("rename err:" + err)
             spinner.stop();

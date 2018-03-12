@@ -1,22 +1,27 @@
 {
     "name": "ve-cli",
-    "version": "1.1.14",
+    "version": "1.1.15",
     "description": "",
-    "main": "index.js",
+    "main": "bin/ve.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "push": "cross-env npm publish && git add --all && git push origin master"
+        "push": "cross-env npm publish && git add --all && git commit -a -m '自动提交' && git push origin master"
     },
     "bin": {
         "ve": "bin/ve.js"
     },
-    "author": "",
+    "author": "plingply",
     "license": "ISC",
-    "devDependencies": {},
+    "devDependencies": {
+        "cross-env": "^5.1.4"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/plingply/ve-cli.git"
+    },
     "dependencies": {
         "chalk": "^2.1.0",
         "commander": "^2.11.0",
-        "cross-env": "^5.0.5",
         "ora": "^1.3.0",
         "rimraf": "^2.6.2"
     }
