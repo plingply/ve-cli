@@ -66,8 +66,7 @@ function downloadFun() {
             if (err)
                 logger.fatal("rename err:" + err)
             console.log("cd /"+ tmp)
-            c.execSync("cd /"+ tmp);
-            c.execSync("npm install");
+            c.execSync("cd /"+ tmp + " && npm install");
 
             spinner.stop();
             logger.fatal("安装完成")
