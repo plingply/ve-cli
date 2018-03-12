@@ -63,14 +63,18 @@ function downloadFun() {
         var c = require("child_process");
         c.execSync("git clone " + url);
         fs.rename(path.join(process.cwd(), 'vue_webpack2.X'), tmp, function (err) {
-            if (err){
+            if (err) {
                 logger.fatal("rename err:" + err)
             }
-            console.log(chalk.green("正在安装模板依赖..."));
-            c.execSync("cd "+ tmp + " && npm install");
-
             spinner.stop();
             logger.fatal("安装完成")
+
+            var spinner = ora("正在安装模板依赖...");
+            spinner.start();
+            c.execSync("cd " + tmp + " && npm install");
+
+            spinner.stop();
+            logger.fatal("下载完成")
         })
     } else {
         var oldpath = path.join(process.cwd(), 'vue_webpack2.X');
