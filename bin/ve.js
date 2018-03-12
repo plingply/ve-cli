@@ -65,7 +65,8 @@ function downloadFun() {
         fs.rename(path.join(process.cwd(), 'vue_webpack2.X'), tmp, function (err) {
             if (err)
                 logger.fatal("rename err:" + err)
-            c.execSync("cd "+tmp);
+            console.log("cd /"+ tmp)
+            c.execSync("cd /"+ tmp);
             c.execSync("npm install");
 
             spinner.stop();
