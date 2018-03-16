@@ -66,8 +66,8 @@ function downloadFun() {
             if (err) {
                 logger.fatal("rename err:" + err)
             }
-           
-            c.execSync("cd "+tmp + " & "+ rm(".git"));
+
+            rm(tmp + "/.git")
             spinner.stop();
             logger.fatal("下载完成")
         })
