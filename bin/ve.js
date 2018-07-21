@@ -1,4 +1,4 @@
-var program = require('commander');
+var program = require("commander");
 var chalk = require('chalk')
 var webpack2 = "https://git.coding.net/plingply/vue_webpack2.X.git";
 var webpack4 = "https://github.com/plingply/webpack4-template.git";
