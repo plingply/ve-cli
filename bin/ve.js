@@ -1,14 +1,14 @@
-const program = require('commander');
-const chalk = require('chalk')
-const webpack2 = "https://git.coding.net/plingply/vue_webpack2.X.git";
-const webpack4 = "https://github.com/plingply/webpack4-template.git";
-const version = require('../package.json').version
-const logger = require("../lib/logger");
-const rm = require("rimraf").sync;
-const path = require("path");
-const fs = require("fs")
-const exists = fs.existsSync;
-const ora = require("ora");
+var program = require('commander');
+var chalk = require('chalk')
+var webpack2 = "https://git.coding.net/plingply/vue_webpack2.X.git";
+var webpack4 = "https://github.com/plingply/webpack4-template.git";
+var version = require('../package.json').version
+var logger = require("../lib/logger");
+var rm = require("rimraf").sync;
+var path = require("path");
+var fs = require("fs")
+var exists = fs.existsSync;
+var ora = require("ora");
 
 program
     .version(version)
