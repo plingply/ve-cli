@@ -44,8 +44,8 @@ else {
 function downloadFun(url,name) {
     var spinner = ora("开始下载模板...");
     spinner.start();
-    if (args[1]) {
-        var tmp = path.join(process.cwd(), args[1]);
+    if (program.args[1]) {
+        var tmp = path.join(process.cwd(), program.args[1]);
         var oldpath = path.join(process.cwd(), name);
         if (exists(tmp)) rm(tmp);
         if (exists(oldpath)) rm(oldpath);
