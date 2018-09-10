@@ -32,7 +32,7 @@ if (program.args.length > 0 && program.args[0] == 'webpack2' && program.args[1])
 
 // 下载webpack4 模板
 else if (program.args.length > 0 && program.args[0] == 'ssr' && program.args[1]) {
-    downloadFun(webpack3,'webpack3-ssr')
+    downloadFun(webpack3,'webpack3-vue-ssr')
 }
 
 // 下载webpack4 模板
