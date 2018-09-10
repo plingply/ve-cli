@@ -2,6 +2,7 @@
 var program = require('commander');
 var chalk = require('chalk')
 var webpack2 = "https://git.coding.net/plingply/vue_webpack2.X.git";
+var webpack3 = "https://github.com/plingply/webpack3-vue-ssr.git";
 var webpack4 = "https://github.com/plingply/webpack4-template.git";
 var version = require('../package.json').version
 var logger = require("../lib/logger");
@@ -27,6 +28,11 @@ if (program.look) {
 // 下载webpack2 模板
 if (program.args.length > 0 && program.args[0] == 'webpack2' && program.args[1]) {
     downloadFun(webpack2,'vue_webpack2.X')
+}
+
+// 下载webpack4 模板
+else if (program.args.length > 0 && program.args[0] == 'ssr' && program.args[1]) {
+    downloadFun(webpack3,'webpack3-ssr')
 }
 
 // 下载webpack4 模板
