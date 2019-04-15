@@ -4,6 +4,7 @@ var chalk = require('chalk')
 var webpack2 = "https://git.coding.net/plingply/vue_webpack2.X.git";
 var webpack3 = "https://github.com/plingply/webpack3-vue-ssr.git";
 var webpack4 = "https://github.com/plingply/webpack4-template.git";
+var wxapp = "https://github.com/plingply/wxapp.git";
 var version = require('../package.json').version
 var logger = require("../lib/logger");
 var rm = require("rimraf").sync;
@@ -38,6 +39,11 @@ else if (program.args.length > 0 && program.args[0] == 'ssr' && program.args[1])
 // 下载webpack4 模板
 else if (program.args.length > 0 && program.args[0] == 'webpack4' && program.args[1]) {
     downloadFun(webpack4,'webpack4-template')
+}
+
+// 下载小程序 模板
+else if (program.args.length > 0 && program.args[0] == 'wxapp' && program.args[1]) {
+    downloadFun(wxapp,'wxapp-template')
 }
 
 else {
