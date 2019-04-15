@@ -43,7 +43,7 @@ else if (program.args.length > 0 && program.args[0] == 'webpack4' && program.arg
 
 // 下载小程序 模板
 else if (program.args.length > 0 && program.args[0] == 'wxapp' && program.args[1]) {
-    downloadFun(wxapp,'wxapp-template')
+    downloadFun(wxapp,'wxapp')
 }
 
 else {
