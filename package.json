@@ -1,10 +1,10 @@
 {
     "name": "ve-cli",
-    "version": "1.3.1",
+    "version": "1.3.2",
     "description": "",
     "main": "bin/ve.js",
     "scripts": {
-        "push": "cross-env npm publish && git add --all && git commit -a -m '删除git仓库文件' && git push origin master"
+        "push": "cross-env npm publish && git add --all && git commit -a -m 'add.' && git push origin master"
     },
     "bin": {
         "ve": "bin/ve.js"
