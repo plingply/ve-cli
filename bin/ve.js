@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+let commander = require('commander');
+let program = new commander.Command();
 var chalk = require('chalk')
 var webpack2 = "https://git.coding.net/plingply/vue_webpack2.X.git";
 var webpack3 = "https://github.com/plingply/webpack3-vue-ssr.git";
@@ -14,42 +15,64 @@ var fs = require("fs")
 var exists = fs.existsSync;
 var ora = require("ora");
 
+
 program
-    .version(version)
-    .usage("webpack2 [项目名称]")
-    .option('-l, --look', '查看支持的webpack版本，以及资源路径')
-    .parse(process.argv);
+    .storeOptionsAsProperties(false) // ；屏蔽参数作为cmd的属性
+    .allowExcessArguments(false) // 严格控制参数顺序
+    .name('ve')
+    .usage('<命令> [参数]')
 
-if (program.look) {
-    console.log(chalk.green('webpack2模板：' + webpack2))
-    console.log(chalk.green('webpack4模板：' + webpack4))
-};
+program
+    .command('look')
+    .option('-l,--look', '输入项目名称')
+    .description('展示支持模板')
+    .action((cmd) => {
+        console.log(chalk.green('webpack2模板：' + webpack2))
+        console.log(chalk.green('webpack3模板：' + webpack3))
+        console.log(chalk.green('webpack4模板：' + webpack4))
+        console.log(chalk.green('wxapp模板：' + wxapp))
+    });
 
+program
+    .command('webpack2')
+    .option('-n,--name <name>', '输入项目名称')
+    .description('创建webpack2模板')
+    .action((cmd) => {
+        console.log('cmd:', cmd)
+        downloadFun(webpack2, cmd.name)
+    });
 
-// 下载webpack2 模板
-if (program.args.length > 0 && program.args[0] == 'webpack2' && program.args[1]) {
-    downloadFun(webpack2, program.args[1])
-}
+program
+    .command('webpack3')
+    .option('-n,--name <name>', '输入项目名称')
+    .description('创建webpack3模板')
+    .action((cmd) => {
+        console.log('cmd:', cmd)
+        downloadFun(webpack3, cmd.name)
+    });
 
-// 下载webpack4 模板
-else if (program.args.length > 0 && program.args[0] == 'ssr' && program.args[1]) {
-    downloadFun(webpack3, program.args[1])
-}
+program
+    .command('webpack4')
+    .option('-n,--name <name>', '输入项目名称')
+    .description('创建webpack4模板')
+    .action((cmd) => {
+        console.log('cmd:', cmd)
+        downloadFun(webpack4, cmd.name)
+    });
 
-// 下载webpack4 模板
-else if (program.args.length > 0 && program.args[0] == 'webpack4' && program.args[1]) {
-    downloadFun(webpack4, program.args[1])
-}
+program
+    .command('wxapp')
+    .option('-n,--name <name>', '输入项目名称')
+    .description('创建小程序模板')
+    .action((cmd) => {
+        console.log('cmd:', cmd)
+        downloadFun(wxapp, cmd.name)
+    });
 
-// 下载小程序 模板
-else if (program.args.length > 0 && program.args[0] == 'wxapp' && program.args[1]) {
-    downloadFun(wxapp, program.args[1])
-} else {
-    if (!program.look) {
-        program.help()
-    }
-}
+program.version(version, '-v, --version', '显示ve版本');
+program.helpInformation();
 
+program.parse(process.argv);
 
 function downloadFun(url, name) {
     var spinner = ora("开始下载模板...");
